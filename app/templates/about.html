@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% block title %}About{% endblock %}
+
+{% block sidenav %}
+<!--Side Navigation Bar-->
+<div id="sidebar">
+  <a href="#"><img src="/static/images/Nevada_State_Seal.png"></a>
+<ul><!--links to each page-->
+  <li><a href="{{ url_for('index') }}">Home</a></li>
+  <li><a href="{{ url_for('about') }}">About</a></li>
+  <li><a href="{{ url_for('policies') }}">Policies</a></li>
+  <li><a href="{{ url_for('education') }}">Education</a></li>
+  {% if current_user.is_authenticated %}
+  <li><a href="{{ url_for('account') }}">Account</a></li>
+  <li><a href="{{ url_for('logout') }}">Logout</a></li>
+  {% else %}
+  <li><a href="{{ url_for('signup') }}">Signup</a></li>
+  <li><a href="{{ url_for('login') }}">Login</a></li>
+  {% endif %}
+</ul>
+<ul id="social-media">
+  <li><a href="https://www.facebook.com/NVSOS/" target="_blank"><i class="fa fa-facebook" style="color:#3B5998"></i></a></li>
+  <li><a href="https://twitter.com/nvgovernment?lang=en" target="_blank"><i class="fa fa-twitter" style="color:#0084b4"></i></a></li>
+    </ul>
+
+<div id="sidebar-btn">
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
+</div>
+
+<script>/*The jQuery will help to open and close the side nav bar*/
+  $(document).ready(function(){
+    $('#sidebar-btn').click(function(){
+    $('#sidebar').toggleClass('visible');/*--toggleClass will use the sidebar-btn to open and close the nav bar--*/
+  });
+  });
+</script>
+{% endblock %}
+
+{% block content2 %}
+<div class="about-container">
+
+<div class="about-header">
+  <h1>Elijah Clarke</h1>
+</div>
+
+<div class="sub-header">
+  <h3>Who Is Elijah Clarke</h3> 
+</div>
+
+<div class="bio-column">
+<p>
+  Born and raised in the city of Carlin in Elko County, northwest Nevada. Elijah had a varied education spanning the state and private sectors, where he had dedicated his time to becoming the best in his choosen fields.
+</p>
+<p>Having attended The Advanced Technologies Academy in Clark County, Las Vegas. Elijah was acepted into Columbia State University where he went on to read Political Science. Shortly leaving soon after to pursue a career at JP Morgan Chase Bank and went on to hold posts in the companys Treasury Services.</p>
+<p>
+  Elijah has been involved in politics for most of his life at various levels from starting out as campaign manager for Senator Carlson's run of State Govenor in 2005 to becoming county leader of Washoe County, Nevada in 2009. In 2012 he became the Deputy Group Leader and Housing Spokesman for the Republican party in Nevada in 2012.
+</p>
+
+<p>
+  Elijah currently resides in the county of Washoe where he is active memeber of his community which has included campaings to provide more funding to the the local county libaries and to improve the conditions at Incline Village Community Hospital which provides health care for many of his constituents. However his campaigns and views don't just lie in his community, he is also an avid enviromentalist who has campainged on many issues nationally and globally; even going as far to help set up the Nevada Division of Environmental Protection.
+</p>
+<p>
+  Elijah has held several positions in Nevadas State Govermnet where he held the position of Chief Deputy Treasurer for North Nevada where he promoted the upgrading of local infrastructure to accomidate for an increase in population over recent years and also helped to reduce taxes for small and medium sized privately owned businesses.
+</p>
+  
+</div>
+</div>
+{% endblock %}
+
+{% block footer %}
+<footer style="text-align: center; margin-top: 60px;">Nevada state &copy; 2018</footer><!--bottom page footer-->
+{% endblock %}
+
+
+

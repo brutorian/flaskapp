@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+
+{% block title %}Nevada Elections | Welcome{% endblock %}
+
+{% block sidenav %}
+   <!--Side Navigation Bar-->
+<div id="sidebar">
+  <a href="#"><img src="/static/images/Nevada_State_Seal.png"></a>
+<ul><!--links to each page-->
+  <li><a href="{{ url_for('index') }}">Home</a></li>
+  <li><a href="{{ url_for('about') }}">About</a></li>
+  <li><a href="{{ url_for('policies') }}">Policies</a></li>
+  <li><a href="{{ url_for('education') }}">Education</a></li>
+  {% if current_user.is_authenticated %}
+  <li><a href="{{ url_for('account') }}">Account</a></li>
+  <li><a href="{{ url_for('logout') }}">Logout</a></li>
+  {% else %}
+  <li><a href="{{ url_for('signup') }}">Signup</a></li>
+  <li><a href="{{ url_for('login') }}">Login</a></li>
+  {% endif %}
+</ul>
+<ul id="social-media">
+  <li><a href="https://www.facebook.com/NVSOS/" target="_blank"><i class="fa fa-facebook" style="color:#3B5998"></i></a></li>
+  <li><a href="https://twitter.com/nvgovernment?lang=en" target="_blank"><i class="fa fa-twitter" style="color:#0084b4"></i></a></li>
+    </ul>
+
+<div id="sidebar-btn"><!--Sidebar icon-->
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
+</div>
+
+<script>/*The jQuery will help to open and close the side nav bar*/
+  $(document).ready(function(){
+    $('#sidebar-btn').click(function(){
+    $('#sidebar').toggleClass('visible');/*--This will allow the user to open and close the side bar when clicking on the icon--*/
+  });
+  });
+</script>
+{% endblock %}
+
+
+{% block content1 %}
+<div class=".index-container">
+  
+<div class="index-header">
+  <h1>Elijah Clarke For Govenor</h1>
+  <blockquote><span>"</span>A politician thinks of the next election.<br> A statesman, of the next generation.<span>"</span></blockquote>
+</div>
+
+<div class="sub-header">
+  <h3>Who Do you want to run for Govenor of nevada?</h3>  
+</div>
+
+<article>
+<p>The time has come to make a change to our political system and make a stand for our fellow citizens and our wonderful State of Nevada.</p>
+
+<p>For too long we have seen the Green party govenor Damien ruin and destroy the basic institutions of the state only one man can rebuild our state to what it once was.</p>
+
+<p>Senator Elijah Clarke is the man who can rebuild trust between the police and the community, reduce crime and help our disinfranchised youth with his 2022 Nevada plan which will benefit evryone not only within in the state but also nationwide across the U.S.</p>
+</article>
+
+<!--image slideshow-->
+<div id="slideshow">
+   <div>
+    <img src="/static/images/1.jpg">
+   </div>
+   <div>
+     <img src="/static/images/2.jpg" alt="slides">
+   </div>
+   <div>
+     <img src="/static/images/3.jpg" alt="slides">
+   </div>
+   <div>
+     <img src="/static/images/4.jpg" alt="slides">
+   </div>
+</div>
+
+<script type="text/javascript">
+$("#slideshow > div:gt(0)").hide();
+
+setInterval(function() {
+  $('#slideshow > div:first')
+    .fadeOut(1000)//fade in speed
+    .next()
+    .fadeIn(1000)//fade out speed
+    .end()
+    .appendTo('#slideshow');
+}, 3000);
+</script>
+
+
+
+</div>
+{% endblock %}
+
+{% block footer %}
+<footer style="text-align: center; margin-top: 540px; margin-bottom: 30px;">Nevada state &copy; 2018</footer><!--bottom page footer-->
+{% endblock %}

@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block title %}User account{% endblock %}
+
+{% block sidenav %}
+   <!--Side Navigation Bar-->
+<div id="sidebar">
+  <a href="#"><img src="/static/images/Nevada_State_Seal.png"></a>
+<ul><!--links to each page-->
+  <li><a href="{{ url_for('index') }}">Home</a></li>
+  <li><a href="{{ url_for('about') }}">About</a></li>
+  <li><a href="{{ url_for('policies') }}">Policies</a></li>
+  <li><a href="{{ url_for('education') }}">Education</a></li>
+  {% if current_user.is_authenticated %}
+  <li><a href="{{ url_for('account') }}">Account</a></li>
+  <li><a href="{{ url_for('logout') }}">Logout</a></li>
+  {% else %}
+  <li><a href="{{ url_for('signup') }}">Signup</a></li>
+  <li><a href="{{ url_for('login') }}">Login</a></li>
+  {% endif %}
+</ul>
+<ul id="social-media">
+  <li><a href="https://www.facebook.com/NVSOS/" target="_blank"><i class="fa fa-facebook" style="color:#3B5998"></i></a></li>
+  <li><a href="https://twitter.com/nvgovernment?lang=en" target="_blank"><i class="fa fa-twitter" style="color:#0084b4"></i></a></li>
+    </ul>
+
+<div id="sidebar-btn"><!--Sidebar icon-->
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
+</div>
+
+<script>/*The jQuery will help to open and close the side nav bar*/
+  $(document).ready(function(){
+    $('#sidebar-btn').click(function(){
+    $('#sidebar').toggleClass('visible');/*--This will allow the user to open and close the side bar when clicking on the icon--*/
+  });
+  });
+</script>
+{% endblock %}
+
+
+{% block account %}
+
+<h1 style="text-align: center; margin-top: 90px;">You're currently logged in as {{ current_user.username }}</h1>
+
+{% endblock %}
+
+{% block footer %}
+<footer style="text-align: center; margin-top: 60px;">Nevada state &copy; 2018</footer><!--bottom page footer-->
+{% endblock %}

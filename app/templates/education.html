@@ -1,0 +1,447 @@
+{% extends "base.html" %}
+
+{% block title %}Education{% endblock %}
+
+{% block sidenav %}
+<!--Side Navigation Bar-->
+<div id="sidebar">
+  <a href="#"><img src="/static/images/Nevada_State_Seal.png"></a>
+<ul><!--links to each page-->
+  <li><a href="{{ url_for('index') }}">Home</a></li>
+  <li><a href="{{ url_for('about') }}">About</a></li>
+  <li><a href="{{ url_for('policies') }}">Policies</a></li>
+  <li><a href="{{ url_for('education') }}">Education</a></li>
+  {% if current_user.is_authenticated %}
+  <li><a href="{{ url_for('account') }}">Account</a></li>
+  <li><a href="{{ url_for('logout') }}">Logout</a></li>
+  {% else %}
+  <li><a href="{{ url_for('signup') }}">Signup</a></li>
+  <li><a href="{{ url_for('login') }}">Login</a></li>
+  {% endif %}
+</ul>
+<ul id="social-media">
+  <li><a href="https://www.facebook.com/NVSOS/" target="_blank"><i class="fa fa-facebook" style="color:#3B5998"></i></a></li>
+  <li><a href="https://twitter.com/nvgovernment?lang=en" target="_blank"><i class="fa fa-twitter" style="color:#0084b4"></i></a></li>
+    </ul>
+
+<div id="sidebar-btn">
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
+</div>
+
+<script>/*The jQuery will help to open and close the side nav bar*/
+  $(document).ready(function(){
+    $('#sidebar-btn').click(function(){
+    $('#sidebar').toggleClass('visible');/*--toggleClass will use the sidebar-btn to open and close the nav bar--*/
+  });
+  });
+</script>
+{% endblock %}
+
+{% block content4 %}
+<div class="education-header">
+  <h1>Education</h1>
+</div>
+
+<div class="sub-header">
+  <h3>The State Of Education</h3> 
+</div>
+  
+<div class="intro-education">
+  <h2 class="intro-education-title">Nevada Education</h2>
+  <p>The Nevada public school system (prekindergarten through grade 12) operates within districts governed by locally elected school boards and superintendents. In 2013 Nevada had 445,707 students enrolled in a total of 664 schools in 18 school districts. </p>
+  <p>Over the years the teaching quality and numbers of students passing have fallen. Leading to the Nevada education system has been ranked as one the lowest performing states in education in the United States.</p>
+  <p><b>What be done to improve the education of our children and improve their future prospects?</b></p>
+</div>
+<br>
+<br>
+
+<div class="container-1">
+<div class="education-1">
+  <h2 class="education-title-1">What's the problem?</h2>
+  <p>Currently the education system in Nevada is failing its students, putting them all at risk of poor oppertunities. 
+  The main problem is funding or a lack of.  The State's school funding is based on the -The Nevada Plan– which was made in 1967 when Nevada was predominately rural and sparsely populated. Today, Nevada is more populous, diverse, and urban, with a vibrant, global economy.</p>
+  <br>
+  <p>Funding has not met the ever changing world of education meaning the State has underfunded one of the most vital institutions of the State. Currently roughly $7,431 is spent on each pupil each year this is down from $8000 in 2011. A stark drop in spending leads to a huge amount of problems and placing even bigger pressures on schools and even the students themselves.A reason for the decrease in the amount spent on pupils is mainly because of the increase in student numbers. The number of students enrolling in schools in Nevada have fluctuated over time mainly due to an increase in the states population growth.
+  The problem is however as the numbers of students enroll in the education system the money spent hasn't increased in proportion.</p>
+
+  
+
+<script>
+
+</script>
+</div>
+</div>
+
+<div class="container-2">
+<div class="education-2">
+ <p>Graduation rates are always a problem for schools and students not only in Nevada but all across the country. Every student is different in how they manage their workloads and how they cope with the stress of school. Graduation and exam results across the board have gradually increased but still not high enough to help provide our students with qualifications to further them on in life.</p>
+ <br> 
+ <p>The rate of students achieving a Standard Diploma of education at the end of schhol has been generally poor compared yo those of other states. With the 2014-2015 there was only a 64.3% pass rate which was down from the year before at 64.6%. Now these results can be down to a variety of factors, however the main problem is there just isn't the resources to help our students. This also shows that too many students are leaving with qualifications and skills to help them get good careers in the future, putting them in poverty. Many of the students not passing are from poorer backgrounds which means they're having to compete against other students who may not have the same the problems faced by the poorer students.</p>
+
+
+</div>
+</div>
+
+<div class="Piechart">
+  <h3 style="text-align:center">2009-2010</h3>
+<svg style="display: block;margin: 0 auto;">   
+  <g id="canvas">
+    <g id="art" />
+    <g id="labels" />
+  </g>
+</svg>
+</div>
+
+<script type="text/javascript">
+  //chart data
+var data = [
+  {education: 'Standard Diploma', value: 72.3},
+  {education: 'Advanced Diploma', value: 16.7},
+  {education: 'Adult Diploma', value: 0.4},
+  {education: 'Adjusted Diploma', value: 5.2},
+  {education: 'High School Equivalency**', value: 0},
+  {education: 'Certificate of Attendance***', value: 5.5}  
+];
+
+data.sort(function(a, b){
+    return b.value - a.value;
+});
+
+//svg for chart
+var svg = d3.select('svg'),
+    canvas = d3.select('#canvas'),
+    art = d3.select('#art'),
+    labels = d3.select('#labels');
+
+var d3Pie = d3.layout.pie();
+d3Pie.value(function(d) {
+    return d.value;
+});
+
+// chart dimension
+var piearc = {
+  height: 500,
+  width: 800,
+  innerRadius: 50,
+  outerRadius: 150,
+  labelRadius: 180
+};
+
+svg.attr({
+  height: piearc.height,
+  width: piearc.width
+});
+
+canvas.attr('transform', 'translate(' + (piearc.width/2) + ', ' + (piearc.height/2) + ')');
+
+//provides the donut shape to the arc
+var pieData = d3Pie(data);
+
+var pieArc = d3.svg.arc()
+                .innerRadius(piearc.innerRadius)
+                .outerRadius(piearc.outerRadius);
+
+
+var colors = d3.scale.category20();
+
+var enteringArcs = art.selectAll('.wedge').data(pieData).enter();
+
+enteringArcs.append('path')
+            .attr('class', 'wedge')
+            .attr('d', pieArc)
+            .style('fill', function(d, i){ return colors(i); });
+
+
+
+var enteringLabels = labels.selectAll('.label').data(pieData).enter();
+var labelGroups = enteringLabels.append('g').attr('class', 'label');
+
+var lines = labelGroups.append('line').attr({
+  x1: function(d, i) {
+    return pieArc.centroid(d)[0];
+  },
+  y1: function(d) {
+    return pieArc.centroid(d)[1];
+  },
+  x2: function(d) {
+    var centroid = pieArc.centroid(d),
+        midAngle = Math.atan2(centroid[1], centroid[0]);
+    return Math.cos(midAngle) * piearc.labelRadius;
+  },
+  y2: function(d) {
+    var centroid = pieArc.centroid(d),
+        midAngle = Math.atan2(centroid[1], centroid[0]);
+    return Math.sin(midAngle) * piearc.labelRadius;
+  },
+  
+  'class': 'label-line',
+  'stroke': function(d, i) {
+    return colors(i);
+  }
+});
+
+var textLabels = labelGroups.append('text').attr({
+    x: function(d, i) {
+      var centroid = pieArc.centroid(d),
+          midAngle = Math.atan2(centroid[1], centroid[0]),
+          x = Math.cos(midAngle) * piearc.labelRadius,
+          sign = x > 0? 1: -1;
+      return x + (5*sign);
+    },
+  
+    y: function(d, i) {
+      var centroid = pieArc.centroid(d),
+          midAngle = Math.atan2(centroid[1], centroid[0]),
+          y = Math.sin(midAngle) * piearc.labelRadius;
+      return y;
+    },
+  
+    'text-anchor': function(d, i) {
+      var centroid = pieArc.centroid(d),
+          midAngle = Math.atan2(centroid[1], centroid[0]),
+          x = Math.cos(midAngle) * piearc.labelRadius;
+      return x > 0? 'start' : 'end';
+    },
+  
+    'class': 'label-text'
+}).text(function(d){
+  return d.data.education + ' ( ' + d.data.value + ' ) ';;
+})
+
+
+// relaxing label
+var alpha = 0.5,
+    spacing = 15;
+
+function relax() {
+  var again = false;
+  textLabels.each(function(d, i) {
+       var a = this,
+           da = d3.select(a),
+           y1 = da.attr('y');
+        textLabels.each(function(d, j) {
+           var b = this;
+            if (a === b) {
+              return ;
+            }
+          
+            db = d3.select(b);
+            if (da.attr('text-anchor') !== db.attr('text-anchor')) {
+              return ;
+            }
+          
+            var y2 = db.attr('y');
+            deltaY = y1 - y2;
+            
+            if (Math.abs(deltaY) > spacing) {
+              return ;
+            }
+          
+            again = true;
+            sign = deltaY > 0? 1: -1;
+            var adjust = sign * alpha;
+            da.attr('y', +y1 + adjust);
+            db.attr('y', +y2 - adjust);
+        });
+  });
+  
+  if (again) {
+      var labelElements = textLabels[0];
+      lines.attr('y2', function(d, i) {
+          var labelForLine = d3.select(labelElements[i]);
+          return labelForLine.attr('y');
+      });
+      setTimeout(relax, 20);
+  }
+}
+
+relax();
+</script>
+
+<br>
+
+<div class="pie-chart" style="display: block;margin: 0 auto;">
+   <h3 style="text-align:center">2015-2016</h3>
+</div>
+<script>
+var width = 1500,
+    height = 400,
+    offset = 1,
+    radius = Math.min(width, height) / 2;
+
+var color = d3.scale.ordinal()
+    .range(["#FA2803", "#FABE03", "#A8FA03", "#03FA75"]);
+
+var arc = d3.svg.arc()
+    .outerRadius(radius - 40)
+    .innerRadius(radius - 80);
+
+// second arc for labels
+var arc2 = d3.svg.arc()
+  .outerRadius(radius)
+  .innerRadius(radius + 20);
+
+var pie = d3.layout.pie()
+    .sort(null)
+    .startAngle(1.1*Math.PI)
+    .endAngle(3.1*Math.PI)
+    .value(function(d) { return d.value; });
+
+var data = [
+  {education:'Adult Diploma*', value: 1.6},
+  {education: 'Advanced Diploma', value: 29.2},
+  {education: 'Standard Diploma', value: 64.3},
+  {education: 'Adjusted Diploma', value: 4.7},
+];
+
+var svg = d3.select("body").append("svg")
+    .attr("id", "chart")
+    .attr("width", width + offset)
+    .attr("height", height + offset)
+    .attr('viewBox', '0 0 ' + width + offset + ''+ width + offset +'')
+    .attr('perserveAspectRatio', 'xMinYMid')
+  .append("g")
+    .attr("transform", "translate(" + (width+offset) / 2 + "," + (height + offset) / 2 + ")");
+
+  data.forEach(function(d) {
+    d.value = +d.value;
+  });
+
+  var g = svg.selectAll(".arc")
+      .data(pie(data))
+    .enter().append("g")
+      .attr("class", "arc");
+
+  g.append("path")
+      .style("fill", function(d) { return color(d.data.education); })
+      .transition().delay(function(d, i) { return i * 500; }).duration(500)
+      .attrTween('d', function(d) {
+         var i = d3.interpolate(d.startAngle+0.1, d.endAngle);
+         return function(t) {
+           d.endAngle = i(t);
+           return arc(d);
+         };
+      });
+
+  g.append("text")
+      .attr("transform", function(d) { return "translate(" + arc2.centroid(d) + ")"; })
+      .attr("dy", ".35em")
+      .attr("class", "d3-label")
+      .style("text-anchor", "middle")
+      .text(function(d) { return d.data.education; });
+
+var aspect = width / height,
+    chart = $("#chart");
+$(window).on("resize", function() {
+    var targetWidth = Math.min(width + offset, chart.parent().width());
+    chart.attr("width", targetWidth);
+    chart.attr("height", targetWidth / aspect);
+}).trigger('resize');
+</script>
+
+<br>
+
+<div class="container-3">
+<div class="education-3">
+  <h3>So what do we intend?</h3>
+  <p>We plan to increase not only the eductaion budget but we also intend to to change the way children are taught generally.</p>
+    <li>Encourage Teachers to Use Social-Networking Sites. This'll allow teachers from across the state and country to share ideas and lesson plans with one another allowing them to coordinate their students learning.</li>
+    <li>Use Free Digital Tools.Want to get teachers excited about using media and technology in the classroom? Show them what’s available—free and online. Take Wordle, for instance, which could be used by elementary teachers to create a highly visual word wall. Or there’s audio-editing software like Audacity and Jamglue. Students can use these to create their own podcasts and public service announcements</li>
+    <li>Educating Parents.A parent’s investment in education is crucial for the success of their children. Providing parents with information on the value of education will be crucial to increasing and maintaining school enrollment. </li>
+    <li>Increase business tax. An increase of the business tax across the state will allow us to generate an extra $18.5 billion in revenue. From that we will use $3 billion to add extra funding to schools in the State. The funding will be used for new books and new technologies to help teachers in educating the future generations of Nevada.</li>
+</div>
+</div>
+
+<div class="barchart" style="margin-left:auto;margin-right:auto;margin-top: 60px;width:35%;">
+  <h3 style="text-align:center">2021 State Education Budgets</h3>
+</div>
+
+
+<script type="text/javascript">
+  // mostly via https://gist.github.com/Jverma/887877fc5c2c2d99be10 with contextual updates
+// set the dimensions of the canvas
+var margin = {top: 20, right: 20, bottom: 70, left: 40},
+    width = 600 - margin.left - margin.right,
+    height = 300 - margin.top - margin.bottom;
+
+
+// set the ranges
+var x = d3.scale.ordinal().rangeRoundBands([0, width], .05);
+
+var y = d3.scale.linear().range([height, 0]);
+
+var data = [
+  {state: "Alabama", budget: 6.9}, 
+  {state: "Arkansas", budget: 5.3},
+  {state: "California", budget: 42.6},
+  {state: "Georgia", budget: 8.4}, 
+  {state: "Kentucky", budget: 8.2 }, 
+  {state: "Massachusetts", budget: 8.7}, 
+  {state: "Mississippi", budget: 4.7}, 
+  {state: "Nevada", budget: 5.9}, 
+  {state: "New York", budget: 15.2}, 
+  {state: "Wyoming", budget: 1.7}];
+ 
+// defines the y and x axis positions
+var xAxis = d3.svg.axis()
+    .scale(x)
+    .orient("bottom")
+
+
+var yAxis = d3.svg.axis()
+    .scale(y)
+    .orient("left")
+    .ticks(data.length);
+
+
+// defines svg element
+var svg = d3.select(".barchart").append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform", 
+          "translate(" + margin.left + "," + margin.top + ")");
+
+  x.domain(data.map(function(d) { return d.state; }));
+  y.domain([0, d3.max(data, function(d) { return d.budget; })]);
+
+  // bar axis
+  svg.append("g")
+      .attr("class", "x axis")
+      .attr("transform", "translate(0," + height + ")")
+      .call(xAxis)
+    .selectAll("text")
+      .style("text-anchor", "end")
+      .attr("dx", "-.8em")
+      .attr("dy", "-.55em")
+      .attr("transform", "rotate(-90)" );
+
+  svg.append("g")
+      .attr("class", "y axis")
+      .call(yAxis)
+    .append("text")
+      .attr("transform", "rotate(-90)")
+      .attr("y", 5)
+      .attr("dy", ".71em")
+      .style("text-anchor", "end")
+      .text("Budgets $bln");
+
+
+  // Add bar chart
+  svg.selectAll("bar")
+      .data(data)
+    .enter().append("rect")
+      .attr("class", "bar")
+      .attr("x", function(d) { return x(d.state); })
+      .attr("width", x.rangeBand())
+      .attr("y", function(d) { return y(d.budget); })
+      .attr("height", function(d) { return height - y(d.budget); });
+</script>
+{% endblock %}
+
+{% block footer %}
+<footer style="text-align: center;">Nevada state &copy; 2018</footer>
+{% endblock %}

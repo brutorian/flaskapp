@@ -1,0 +1,160 @@
+{% extends "base.html" %}
+
+{% block title %}Policies{% endblock %}
+
+{% block sidenav %}
+<!--Side Navigation Bar-->
+<div id="sidebar">
+  <a href="#"><img src="/static/images/Nevada_State_Seal.png"></a> 
+<ul><!--links to each page-->
+  <li><a href="{{ url_for('index') }}">Home</a></li>
+  <li><a href="{{ url_for('about') }}">About</a></li>
+  <li><a href="{{ url_for('policies') }}">Policies</a></li>
+  <li><a href="{{ url_for('education') }}">Education</a></li>
+  {% if current_user.is_authenticated %}
+  <li><a href="{{ url_for('account') }}">Account</a></li>
+  <li><a href="{{ url_for('logout') }}">Logout</a></li>
+  {% else %}
+  <li><a href="{{ url_for('signup') }}">Signup</a></li>
+  <li><a href="{{ url_for('login') }}">Login</a></li>
+  {% endif %}
+</ul>
+<ul id="social-media">
+  <li><a href="https://www.facebook.com/NVSOS/" target="_blank"><i class="fa fa-facebook" style="color:#3B5998"></i></a></li>
+  <li><a href="https://twitter.com/nvgovernment?lang=en" target="_blank"><i class="fa fa-twitter" style="color:#0084b4"></i></a></li>
+    </ul>
+
+<div id="sidebar-btn">
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
+</div>
+
+<script>/*The jQuery will help to open and close the side nav bar*/
+  $(document).ready(function(){
+    $('#sidebar-btn').click(function(){
+    $('#sidebar').toggleClass('visible');/*--toggleClass will use the sidebar-btn to open and close the nav bar--*/
+  });
+  });
+</script>
+{% endblock %}
+
+{% block content3 %}
+<div class="policies-container">
+
+<div class="policies-header">
+  <h1>Policies</h1>
+</div>
+
+<div class="sub-header">
+  <h3>What do we intend to do?</h3> 
+</div>
+  
+<div class="collapsible-box">
+<div class="collapsible-header">Enviroment</div>
+<div class="policy-content">
+  
+  <p>Over the past several years the enviromental budget for Nevada has steadily increased from $109,356,174 in 2011 to $150,482,492 in 2018.</p>
+
+<p>The state goverments main aim is to help reduce carbon emissions created by industries within the the state. As we all know the global temperatures have increased signifacntly over the years, the state itself has warmed about two degrees (F) in the last century.</p>
+
+<img src="/static/images/5.jpg" style="width:500px;height:250px;"><!--image/media-->
+
+<p>What problems does global warming cause?
+<ol>
+  <li>Increases the chances of droughts within the state</li>
+  <li>Limits the use of water for some purposes such as argiculture</li>
+  <li>Wildfires will become more frequent and increase in severity.</li>
+</ol></p>
+
+<p>As of July 2016, Nevada was home to 38 species—22 endangered species and 16 threatened species—listed under the federal Endangered Species Act (ESA). Of these, 28 were animal species and 10 were plant species. This shows the dangers our fragile ecosystems face.
+</p>
+
+<p><h4>What do we intend to do?</h4>
+  <ol>
+    <li>Creating more habitat for wildlife</li>
+    <dt>Due to the decline in wildlife numbers in the face of intensive farming and land lost to housing and development, the environment department will investigate establishing 500,000 extra hectares of wildlife habitat. This is al, in an effort to connect up large areas of nature reserves to allow the wildlife to increase in numbers and also allowing them to move.</dt>
+    <li>Replacing fossil fuels</li>
+    <dt>Our aim is to promote greater use of renewable forms of powere such as thermal energy. This will help to reduce the overall amount of CO2 produced in the state. It will also provide the opertuunity to create over 5000 new jobs in th state alone.
+    </dt>
+    <li>Reduce air pollution in cities</li>
+    <dt>Air pollution is a threat to everyones health, which can lead to illnesses and even to deaths. We intend to boost public transport with an extra $50,000,000 a year and increase public spaces in turn reducing the number of vehicles entering the city. This will also help to boost the local economy and local buisnesses.</dt>
+  </ol>
+</p>
+</div>
+
+
+  <div class="collapsible-header">Crime</div>
+  <div class="policy-content"><p>In 2017 there were a total of over 95,000 crimes in the State of Nevada, 19,936 violent and 76,047 property crimes. This means you have a chance of 1 in 147 chance of becoming a victim to some form of crime.</p>
+
+  <p>Between 2015 and 2016 the total policing budget decreased from $11.6 billion in fiscal year 2015 to an estimated $11.5 billion, that's a total of $102.0 million. This figure has remained relatively the same over the past couple of years.</p> 
+
+<img src="/static/images/3.jpg" style="width:500px;height:250px;"><!--image/media-->
+
+<p><h4>What are the main causes?</h4>
+<ol>
+  <li>Decrease in police numbers</li>
+  <li>Increase in unemployment and homelessness</li>
+  <li>Lack of development in poorer communities</li>
+  <li>Closure and poor performances of schools</li>
+</ol>
+</p>
+
+<p><h4>What do we intend to do?</h4>
+<ol>
+  <li>Introduce an alcohol tax</li>
+  <dt>An introduction of an acohol tax will increase the prices of all forms of alcohol by 10%, this will mean people will have less money to spend on alcohlic beverages. Alcoholism and crime have a strong link especially in poorer communities where crime is prevalent. This will not only help to reduce the crime over time but also provide these families with more expenadble income to them. The tax will be spent on improving local emrgency services.</dt>
+  <li>Boost police spending</li>
+  <dt>We intend to boost the police budget to $11.7 billion and increase by 0.8% each year till the next elction. An increase in budget will allow local police forces to invest in better equipment and technologies to help tackle new forms of crimes aswell as traditional forms of crime. It will also allow the state to employee an extra 2,500 officers and other personnel. This money will be raised by increasing coropation tax.</dt>
+  <li>Focus on prevention</li>
+  <dt>We intend to focus on the needs on preventing the conditions that draw people into violent or criminal behaviour. To do this we will provide greater services to poorer communitites or those at risk. Whilst at the same time providing greater education to poorer students and individuals to ensure they have great prospects in the future.</dt>
+</ol></p>
+</div>
+
+  <div class="collapsible-header">Healthcare</div>
+  <div class="policy-content">
+    <p>
+    There has been a spike in recent years of deaths in hospitals due to poor conditions and long waiting times. This is an issue which affects us all on a daily basis and should not be happening to our citizens.
+  </p>
+
+  <p><h4>What do we intend to do?</h4></p>
+  <ol>
+    <li>Provide better qaulity and service</li>
+    <dt>Provide hospitals and clinics with more money to allow them to increase not only their patient care but also the state of the enviroment in which such care takes place. This will allow these areas to buy newer and more modern equipment; also to allow them to build extras wards and surgies for future operations.</dt>
+    <li>Revamp the front-line scheduling process</li>
+    <dt>Scheduling surgeries and other non-life-threatening procedures should take supply and demand into account. Patients should be scheduled for these procedures on days where the hospital’s less likely to have a spike in patient volume due to a busy evening in the ED. Also scheduling should be focused on patients, not providers. So it’s important for hospitals to reach out to find out what kinds of changes would best suit patients’ needs. </dt>
+    <li>Providing greater care for those at risk</li>
+    <dt>Poverty is one of the major reasons why people die either waiting for an operation or they can't afford it. It down to society to help it poor and weak, so we intend to provide goverment assistance to those who can not afford their medical bills. The state will pay cover 65% of the costs while the remaining 35% is covered by the individual.</dt>
+  </ol>
+</div>
+
+<div class="collapsible-header">Tax</div>
+  <div class="policy-content">
+    <p>Tax is what helps a state increase the amount of spenable revnue it has which are spent on local services such as hospitals, education, infrastructure and police. Last year Nevada raised $15 billion in taxes, a huge amount of revenue, however most of that was garnered by the taxpayer whilst larger businesses appeared to have their tax slashed by 25%. This means families and citizens are put under greater finacial pressures because they have to bear the burden. This is unacceptable it the eyes of Elijah Clarke</p>
+
+    <p><h4>What do we intend to do?</h4></p>
+  <ol>
+    <li>We intend to increase corporation tax</li>
+    <dt>We intend to increase coropartion tax from 15% of which they pay already up to 25%.Now we know this is a huge increase tax however what people need to know that its time for businesses to pay their fair share. The money will help to generat an extra $18.5 billion in revenue for the State. This boost in revenue will help us plug any holes in any of our public services aswell providing extra money for community projects such as the opening of new public libaries and parks.</dt>
+    <li>Reduce tax for the most vulnerable</li>
+    <dt>Due to a decrease in living standards for the poorest of our communities we propse a tax break for those most pooest in our society. This will help to increase the amount of money poorer families have to spend on daily essentials, also helping to decrease the reliance on food banks. Also studies have shown that if a family has more expendable income available, the more likely they will succeed in school and not live in poverty in the future. As it stands the average low income family has to pay $3,500-$5,000 a year in taxes, that will be slashed down to just under $1,500. The lost money will be made in taxing the richer indivauls of the State and also large corporations.</dt>
+    <li>Support for smaller businesses</li>
+    <dt>We know that running a small business can be hard for anyone and taxes can essentially put the business under greater strain as it may mean a loss in revenue; and we want businesses in Nevada to thrive. So we propose a tax credit to these businesses, so this means if a business is struggling it can apply to have a 19% tax cut which will last roughly for 10-12 monthds or until it is deemed to be be in safe waters fiancially. This will help to stop businesses from racking up huge amounts of debts for loaning companies and also allow them to increase their staff numbers in effect helping to reduce the rate of unemployemnt in Nevada.</dt>
+  </ol>
+</div>
+
+<script type="text/javascript">
+  $(".collapsible-box").on("click", ".collapsible-header", function() /*--when clcking on the heading tabs will lead to a drop down box--*/ {
+  $(this).toggleClass("active").next().slideToggle();
+ });
+</script>
+
+
+</div>
+</div>
+{% endblock %}
+
+{% block footer %}
+<footer style="text-align: center;">Nevada state &copy; 2018</footer><!--bottom page footer-->
+{% endblock %}

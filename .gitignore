@@ -1,0 +1,14 @@
+# SQLite databases
+sqlite
+
+# Virtual environment
+venv
+
+#site.db
+site.db
+
+#testdb.db
+testdb.db
+
+#config.py
+config.py
