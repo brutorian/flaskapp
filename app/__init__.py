@@ -16,7 +16,7 @@ app.config['SECRET_KEY'] = SECRET_KEY
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://tjrxdiwbosxtdo:ecadcd4c3fa96e24c8af4c249aac23a7342fa9fc5a720f63348e84d0c0f39058@ec2-54-228-252-67.eu-west-1.compute.amazonaws.com:5432/dakbjfjtc970u5'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-db = SQLAlchemy()#SQL
+db = SQLAlchemy(app)#SQL
 bcrypt = Bcrypt(app)#password security
 login_manager = LoginManager()
 login_manager.init_app(app)
