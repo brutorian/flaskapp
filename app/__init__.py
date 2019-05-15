@@ -11,10 +11,10 @@ from flask_bcrypt import Bcrypt
 app = Flask(__name__)
 #config
 import os
-SECRET_KEY = os.urandom(32)
+SECRET_KEY = os.urandom(32) #Create random secret key
 app.config['SECRET_KEY'] = SECRET_KEY
 
-db = SQLAlchemy(app)#SQL
+db = SQLAlchemy()#SQL
 bcrypt = Bcrypt(app)#password security
 login_manager = LoginManager()
 login_manager.init_app(app)
