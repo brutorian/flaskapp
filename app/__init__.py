@@ -130,5 +130,4 @@ def logout():
 
 
 if __name__ == '__main__':
-    app.run(DEBUG=True)
-    db.init_app(app)
+    app.run(DEBUG=False)
