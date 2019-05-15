@@ -10,7 +10,7 @@ from flask_bcrypt import Bcrypt
 
 app = Flask(__name__)
 #config
-app.config.from_object('config.BaseConfig')  #Hidden details
+#app.config.from_object('config.BaseConfig')  #Hidden details
 
 db = SQLAlchemy(app)#SQL
 bcrypt = Bcrypt(app)#password security
