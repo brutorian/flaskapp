@@ -10,7 +10,9 @@ from flask_bcrypt import Bcrypt
 
 app = Flask(__name__)
 #config
-#app.config.from_object('config.BaseConfig')  #Hidden details
+import os
+SECRET_KEY = os.urandom(32)
+app.config['SECRET_KEY'] = SECRET_KEY
 
 db = SQLAlchemy(app)#SQL
 bcrypt = Bcrypt(app)#password security
