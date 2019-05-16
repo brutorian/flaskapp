@@ -11,9 +11,11 @@ from flask_bcrypt import Bcrypt
 app = Flask(__name__)
 #config
 import os
+import psycopg2
 SECRET_KEY = os.urandom(32) #Create random secret key
 app.config['SECRET_KEY'] = SECRET_KEY
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://ryqvvwiblsrxfs:88da75af1e6d9e3c53832cd04d09e519d019a4562d1aba0bce79306157cad650@ec2-75-101-147-226.compute-1.amazonaws.com:5432/d2k6cn03lfjes1'
+DATABASE_URL = os.environ['DATABASE_URL']
+conn = psycopg2.connect(DATABASE_URL, sslmode='require')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)#SQL
