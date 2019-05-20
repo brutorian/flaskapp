@@ -132,4 +132,4 @@ def logout():
 
 
 if __name__ == '__main__':
-    app.run(DEBUG=False)
+    app.run(DEBUG=True)
