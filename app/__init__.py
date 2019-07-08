@@ -11,8 +11,8 @@ from flask_bcrypt import Bcrypt
 
 import psycopg2
 app = Flask(__name__)
-app.config['SECRET_KEY'] = '563782736782678589978864453'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
+app.config['SECRET_KEY'] = 'SECRET_KEY'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'DATABASE_URL'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)#SQL
