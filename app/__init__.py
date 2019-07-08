@@ -5,17 +5,14 @@ from wtforms.validators import DataRequired, Length, Email, EqualTo
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
 from flask_login import UserMixin
-from flask_login import login_user, current_user, logout_user, login_required
+from flask_login import login_user,  logout_user, login_required
 from flask_bcrypt import Bcrypt
 
-app = Flask(__name__)
-#config
-import os
+
 import psycopg2
-SECRET_KEY = os.urandom(32) #Create random secret key
-app.config['SECRET_KEY'] = SECRET_KEY
-app.config['DATABASE_URL'] = 'postgres://tjrxdiwbosxtdo:ecadcd4c3fa96e24c8af4c249aac23a7342fa9fc5a720f63348e84d0c0f39058@ec2-54-228-252-67.eu-west-1.compute.amazonaws.com:5432/dakbjfjtc970u5'
-conn = psycopg2.connect(DATABASE_URL, sslmode='require')
+app = Flask(__name__)
+app.config['SECRET_KEY'] = '563782736782678589978864453'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)#SQL
@@ -23,6 +20,7 @@ bcrypt = Bcrypt(app)#password security
 login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = 'login'#@login_required redirection
+
 
 #Registration Form
 class RegisterForm(FlaskForm):
@@ -32,12 +30,13 @@ class RegisterForm(FlaskForm):
     confirm_password = PasswordField('Confirm password', validators=[DataRequired(), EqualTo('password')])#pssword same as confirm_password
     submit = SubmitField('Register')
 
-    #validate email and username
+
     #validate username
     def validate_username(self, username):
         user = User.query.filter_by(username=username.data).first()
         if user:
             raise ValidationError
+
 
     #validate email
     def validate_email(self, email):
@@ -132,4 +131,4 @@ def logout():
 
 
 if __name__ == '__main__':
-    app.run(DEBUG=True)
+    app.run(debug=True)
