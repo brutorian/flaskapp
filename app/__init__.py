@@ -12,7 +12,7 @@ from flask_bcrypt import Bcrypt
 import psycopg2
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'SECRET_KEY'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'DATABASE_URL'
+app.config['DATABASE_URL'] = 'DATABASE_URL'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)#SQL
