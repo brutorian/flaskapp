@@ -9,6 +9,7 @@ from flask_login import login_user,  logout_user, login_required
 from flask_bcrypt import Bcrypt
 
 
+import os
 import psycopg2
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'SECRET_KEY'
